@@ -1,0 +1,177 @@
+---
+title: "Drew Radovich's CV"
+author: Drew Radovich
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/styles.css', 'resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(glue)
+library(tidyverse)
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- TRUE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+# Load csv with position info
+position_data <- read_csv('positions.csv')
+```
+
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("
+  <style>
+  :root{
+    --decorator-outer-offset-left: -6.5px;
+  }
+  </style>")
+}
+```
+
+
+Aside
+================================================================================
+
+
+![logo](beta_dist.png){width=100%}
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("View this CV online with links at drewradovich.github.io/cv.html")
+} else {
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/drewradovich/cv/raw/master/radovich_cv.pdf)")
+}
+```
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+
+- <i class="fa fa-envelope"></i> drew.sradovich@gmail.com
+- <i class="fa fa-github"></i> github.com/drewradovich
+- <i class="fa fa-link"></i> [drewradovich.github.io/cv](http://drewradovich.github.io/cv/)
+- <i class="fa fa-phone"></i> (425) 922-4134
+
+
+
+Technical Skills {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+skills <- tribble(
+  ~skill,               ~level,
+  "R",                  5,
+  "SQL",                4.5,
+  "Excel",              4,
+  "Tableau",            3.5,
+  "PowerBI",            3,
+  "Python",             3
+)
+
+build_skill_bars(skills)
+```
+
+
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
+
+The source code is available at [github.com/nstrayer/cv](https://github.com/nstrayer/cv).
+
+Last updated on `r Sys.Date()`.
+
+
+
+
+Main
+================================================================================
+
+Drew Radovich {#title}
+--------------------------------------------------------------------------------
+
+
+```{r}
+intro_text <- "I am a current graduate student in Data Analytics with a strong background in retail and operations. I have been responsible for expanding retail locations, optimizing inventory processing, and using sales data to help improve overall business performance.
+
+Currently searching for a data analytics position that allows me to dive deep using visualization and SQL/R to help people explore and understand their data. 
+"
+
+cat(sanitize_links(intro_text))
+```
+
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section(position_data, 'education')
+```
+
+
+Industry Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+::: aside
+I have worked in a variety of roles ranging from sales associate to delivery driver to operations analyst. I enjoy collaborative and goal driven environments where I can learn from my peers. 
+:::
+
+```{r}
+print_section(position_data, 'industry_positions')
+```
+
+<br>
+<br>
+<br>
+
+
+Selected Data Analyst Projects {data-icon=chart-line}
+--------------------------------------------------------------------------------
+
+
+::: aside
+I regularly complete personal data projects and am always open to collaborating. View my current projects on [my GitHub](https://github.com/drewradovich)
+:::
+
+```{r}
+print_section(position_data, 'projects')
+```
+
+
+```{r}
+if(PDF_EXPORT){
+  cat("
+  
+Links {data-icon=link}
+--------------------------------------------------------------------------------
+
+<br>
+
+
+")
+  
+  walk2(links, 1:length(links), function(link, index){
+    print(glue('{index}. {link}'))
+  })
+}
+```
