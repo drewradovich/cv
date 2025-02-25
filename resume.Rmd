@@ -54,15 +54,14 @@ Contact {#contact}
 
 
 
-- <i class="fa fa-envelope"></i> nick.strayer@gmail.com
-- <i class="fa fa-twitter"></i> NicholasStrayer
-- <i class="fa fa-github"></i> github.com/nstrayer
-- <i class="fa fa-link"></i> [nickstrayer.me](http://nickstrayer.me/)
-- <i class="fa fa-phone"></i> (734) 645-0110
+- <i class="fa fa-envelope"></i> drew.sradovich@gmail.com
+- <i class="fa fa-github"></i> github.com/drewradovich
+- <i class="fa fa-link"></i> [drewradovich.github.io](http://drewradovich.github.io/)
+- <i class="fa fa-phone"></i> (425) 922-4134
 
 
 
-Language Skills {#skills}
+Technical Skills {#skills}
 --------------------------------------------------------------------------------
 
 
@@ -70,12 +69,11 @@ Language Skills {#skills}
 skills <- tribble(
   ~skill,               ~level,
   "R",                  5,
-  "Javascript (d3.js)", 4.5,
-  "Python",             4,
-  "Bash",               3.5,
-  "SQL",                3,
-  "C++",                3,
-  "AWK",                3
+  "SQL",                4.5,
+  "Excel",              4,
+  "PowerBI",            3.5,
+  "Tableau",            3,
+  "Python",             3
 )
 build_skill_bars(skills)
 ```
@@ -85,18 +83,14 @@ build_skill_bars(skills)
 Open Source Contributions {#open-source}
 --------------------------------------------------------------------------------
 
-All projects available at `github.com/drewradovich/<name>`
+All projects available at `github.com/drewradovich`
 
-
-- `shinysense`: R package to use sensor data in Shiny apps
-- `tuftesque`: Hugo theme (behind LiveFreeOrDichotomize.com)
-- `slid3r`: D3 add-on for fully svg slider inputs
 
 
 More info {#more-info}
 --------------------------------------------------------------------------------
 
-
+I love using data to uncover trends and patterns that can be used to make informed business decisions and gain a deeper understanding of the end user behavior.
 
 
 Disclaimer {#disclaimer}
@@ -138,14 +132,14 @@ position_data %>% print_section('education')
 
 
 
-Selected Positions {data-icon=suitcase}
+Work Experience {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
 position_data %>% print_section('positions')
 ```
 
-Selected Projects {data-icon=newspaper}
+Projects {data-icon=newspaper}
 --------------------------------------------------------------------------------
 
 
